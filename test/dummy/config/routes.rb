@@ -6,6 +6,8 @@ Dummy::Application.routes.draw do
     get 'show',   :to => 'dummy#show'
   end
 
+  get 'foo', :to => 'dummy#foo'
+
   root :to => 'dummy#dummy'
 
   mount DummyMountedApp.new => '/dummy_mounted_app'

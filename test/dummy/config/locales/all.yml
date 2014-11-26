@@ -13,3 +13,6 @@ ru:
   routes:
     dummy: манекен
     show: показывать
+cs:
+  routes:
+    foo: bar

@@ -8,4 +8,8 @@ class DummyController < ActionController::Base
     # Pass
   end
 
+  def foo
+    # Pass
+  end
+
 end

@@ -31,7 +31,7 @@ module ActionDispatch
             mapping = Mapping.build(@scope, @set, URI.parser.escape(path), options.delete(:as), options)
           end
 
-          if @localized
+          if @localized || RouteTranslator.config.force_all_localized
             @set.add_localized_route(*mapping.to_route)
           else
             @set.add_route(*mapping.to_route)
@@ -42,7 +42,7 @@ module ActionDispatch
           def match(path, options=nil)
             mapping = Mapping.new(@set, @scope, path, options || {})
             app, conditions, requirements, defaults, as, anchor = mapping.to_route
-            if @localized
+            if @localized || RouteTranslator.config.force_all_localized
               @set.add_localized_route(app, conditions, requirements, defaults, as, anchor)
             else
               @set.add_route(app, conditions, requirements, defaults, as, anchor)

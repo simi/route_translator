@@ -34,4 +34,11 @@ class GeneratedPathTest < integration_test_suite_parent_class
     assert_tag :tag => "a", :attributes => { :href => "/es/mostrar" }
   end
 
+  def test_path_translated_after_force_all_localized
+    config_force_all_localized true
+
+    get '/cs/bar'
+    assert_response :success
+    assert_tag :tag => "a", :attributes => { :href => "/cs/bar" }
+  end
 end
